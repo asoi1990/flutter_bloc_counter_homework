@@ -17,6 +17,6 @@ class DecreaseNumberInitial extends ChangingNumberState {
   DecreaseNumberInitial(int number) : super(number);
 }
 
-class AutoNumberInitial extends ChangingNumberState {
-  AutoNumberInitial(int number) : super(number);
-}
+// class AutoNumberInitial extends ChangingNumberState {
+//   AutoNumberInitial(int number) : super(number);
+// }

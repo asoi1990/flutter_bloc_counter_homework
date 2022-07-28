@@ -11,4 +11,4 @@ class IncreaseNumberEvent extends ChangingNumberEvent {}
 
 class DecreaseNumberEvent extends ChangingNumberEvent {}
 
-class AutoNumberEvent extends ChangingNumberEvent {}
+// class AutoNumberEvent extends ChangingNumberEvent {}

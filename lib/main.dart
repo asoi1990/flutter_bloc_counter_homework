@@ -1,6 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/bloc/autoIncreament/bloc/auto_increament_number_bloc.dart';
 import 'package:flutter_application_1/bloc/increase_number_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'bloc/increase_number_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,6 +16,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final autoNumber = AutoIncreamentNumberBloc();
+// final _bloc = AutoIncreamentNumberBloc();
     return BlocProvider(
         create: (context) => ChangingNumberBloc(),
         child: MaterialApp(
@@ -23,27 +30,6 @@ class MyApp extends StatelessWidget {
                 children: <Widget>[
                   Text(state.changingNumber.toString(),
                       style: Theme.of(context).textTheme.headline4),
-                  // StreamBuilder<int>(
-                  //     stream: generateNumbers,
-                  //     builder: (context, AsyncSnapshot<int> snapshot) {
-                  //       if (snapshot.connectionState ==
-                  //           ConnectionState.waiting) {
-                  //         return CircularProgressIndicator();
-                  //       } else if (snapshot.connectionState ==
-                  //               ConnectionState.active ||
-                  //           snapshot.connectionState == ConnectionState.done) {
-                  //         if (snapshot.hasError) {
-                  //           return const Text('Error');
-                  //         } else if (snapshot.hasData) {
-                  //           return Text(snapshot.data.toString(),
-                  //               style: Theme.of(context).textTheme.headline4);
-                  //         } else {
-                  //           return const Text('Empty data');
-                  //         }
-                  //       } else {
-                  //         return Text('State: ${snapshot.connectionState}');
-                  //       }
-                  //     }),
                   Center(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -105,13 +91,48 @@ class MyApp extends StatelessWidget {
                                 primary: Colors.black,
                                 textStyle: const TextStyle(fontSize: 20),
                               ),
-                              onPressed: () {},
-                              child: const Text('Auto'),
+                              onPressed: () {
+                                autoNumber.startStream();
+                              },
+                              child: const Text('Start'),
+                            ),
+                            TextButton(
+                              style: TextButton.styleFrom(
+                                backgroundColor: Colors.blueAccent,
+                                padding: const EdgeInsets.all(16.0),
+                                primary: Colors.black,
+                                textStyle: const TextStyle(fontSize: 20),
+                              ),
+                              onPressed: () {
+                                autoNumber.stopStream();
+                              },
+                              child: const Text('Stop'),
                             )
                           ]),
                         )
                       ],
                     ),
+                  ),
+                  Center(
+                    child: StreamBuilder<int>(
+                        stream: autoNumber.updatedNumber,
+                        builder: (context, AsyncSnapshot<int> snapshot) {
+                          if (snapshot.connectionState ==
+                                  ConnectionState.active ||
+                              snapshot.connectionState ==
+                                  ConnectionState.done) {
+                            if (snapshot.hasError) {
+                              return const Text('Error');
+                            } else if (snapshot.hasData) {
+                              return Text(snapshot.data.toString(),
+                                  style: Theme.of(context).textTheme.headline4);
+                            } else {
+                              return const Text('Empty data');
+                            }
+                          } else {
+                            return Text('State: ${snapshot.connectionState}');
+                          }
+                        }),
                   )
                 ],
               )));
@@ -120,3 +141,8 @@ class MyApp extends StatelessWidget {
         ));
   }
 }
+
+
+// https://medium.com/flutter-community/flutter-bloc-with-streams-6ed8d0a63bb8
+
+// https://flutterbyexample.com/lesson/calendar-app-introduction
