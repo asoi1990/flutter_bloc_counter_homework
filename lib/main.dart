@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
                       children: <Widget>[
                         Container(
                             margin: const EdgeInsets.all(10),
-                            child: Row(
+                            child: Column(
                               children: <Widget>[
                                 TextButton(
                                   style: TextButton.styleFrom(
@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
                             )),
                         Container(
                             margin: const EdgeInsets.all(10),
-                            child: Row(
+                            child: Column(
                               children: <Widget>[
                                 TextButton(
                                   style: TextButton.styleFrom(
