@@ -603,11 +603,4 @@ FodyWeavers.xsd
 .idea/runConfigurations/main_dart.xml
 .dart_tool/chrome-device/Default/Service Worker/ScriptCache/67a473248953641b_0
 .dart_tool/chrome-device/Default/Sessions/Session_13303440010679321
-build/c075001b96339384a97db4862b8ab8db.cache.dill.track.dill
-build/7db1e552c4f2421ffb805cf49657778a/gen_dart_plugin_registrant.stamp
-build/flutter_assets/kernel_blob.bin
-build/flutter_assets/NOTICES.Z
-build/7db1e552c4f2421ffb805cf49657778a/gen_dart_plugin_registrant.stamp
-build/7db1e552c4f2421ffb805cf49657778a/gen_dart_plugin_registrant.stamp
-build/c075001b96339384a97db4862b8ab8db.cache.dill.track.dill
-build/*.*
+build/
