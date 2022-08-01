@@ -1,14 +1,25 @@
 part of 'increase_number_bloc.dart';
 
 abstract class ChangingNumberEvent extends Equatable {
-  const ChangingNumberEvent();
+  String step;
+  ChangingNumberEvent(this.step);
 
   @override
   List<Object> get props => [];
 }
 
-class IncreaseNumberEvent extends ChangingNumberEvent {}
+class IncreaseNumberEvent extends ChangingNumberEvent {
+  IncreaseNumberEvent(String inputStep) : super(inputStep);
+}
 
-class DecreaseNumberEvent extends ChangingNumberEvent {}
+class DecreaseNumberEvent extends ChangingNumberEvent {
+  DecreaseNumberEvent(String inputStep) : super(inputStep);
+}
 
-// class AutoNumberEvent extends ChangingNumberEvent {}
+class AutoStartNumberEvent extends ChangingNumberEvent {
+  AutoStartNumberEvent(String inputStep) : super(inputStep);
+}
+
+class StopNumberEvent extends ChangingNumberEvent {
+  StopNumberEvent(String inputStep) : super(inputStep);
+}
